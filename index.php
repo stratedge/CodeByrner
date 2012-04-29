@@ -1,16 +1,6 @@
 <?php
 
 /*
- * --------------------------------------------------------------
- *  DEAL WITH TIMEZONE STUFF (JB)
- * --------------------------------------------------------------
- */
-	if( ! ini_get('date.timezone') )
-	{
-	   date_default_timezone_set('GMT');
-	} 
-	
-/*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
  *---------------------------------------------------------------
@@ -66,7 +56,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = '../system';
+	$system_path = 'system';
 
 /*
  *---------------------------------------------------------------
@@ -82,7 +72,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = realpath('../application');
+	$application_folder = 'application';
 
 /*
  * --------------------------------------------------------------------

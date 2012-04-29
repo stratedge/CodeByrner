@@ -50,17 +50,6 @@ $autoload['packages'] = array();
 | Prototype:
 |
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
-|
-| -------------------------------------------------------------------
-| I suggest you autoload the following libraries (JB):
-| - session
-| - JSON
-| - Component
-| - MemberComponent
-| - Template
-| - database
-| - Service
-|
 */
 
 $autoload['libraries'] = array();
@@ -73,15 +62,9 @@ $autoload['libraries'] = array();
 | Prototype:
 |
 |	$autoload['helper'] = array('url', 'file');
-|
-| -------------------------------------------------------------------
-| I suggest you autoload the following helpers (JB):
-| - utilities
-| - url
-|
 */
 
-$autoload['helper'] = array('utilities', 'url');
+$autoload['helper'] = array();
 
 
 /*
@@ -97,7 +80,7 @@ $autoload['helper'] = array('utilities', 'url');
 |
 */
 
-$autoload['config'] = array('template');
+$autoload['config'] = array();
 
 
 /*
