@@ -144,7 +144,7 @@ if ( ! function_exists('load_class'))
 				{
 					require($path.$directory.'/'.$class.'.php');
 				}
-
+if($class == 'Page') exit(print_r($_classes));
 				break;
 			}
 		}

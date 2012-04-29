@@ -14,3 +14,20 @@
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */
+
+
+/*
+ * Pre-system hook that will load the classes required for CodeByrner's functionality so that our
+ * controllers can extend them. Would use the pre-controller hook, but that actually gets called
+ * after the controller is loaded.
+ */
+$hook['pre_controller_load'][] = array(
+    'class'    => 'CodeByrner',
+    'function' => 'loadCodeByrner',
+    'filename' => 'Codebyrner.php',
+    'filepath' => 'hooks',
+    'params' => array('Page')
+);
+
+/* End of file hooks.php */
+/* Location: ./application/config/hooks.php */
