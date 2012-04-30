@@ -1,8 +1,10 @@
 <h1>Welcome To CodeByrner!</h1>
 
-CodeByrner is a small set of files added to the base CodeIgniter library, along with only one infintismal change to a standard CodeIgniter file.
+CodeByrner is an open source, free-to-use-and-modify library that extends CodeIgniter in order to construct pages from many small, reusable components, instead of single controllers.
 
-<b>Whoa, a single change to a core CodeIgniter file? What gives? That sounds...bad.</b>
+A premium has been placed on keeping CodeByrner as small and as clean as possible, as well as keeping as light a processing footprint as possible. CodeByrner is a small set of files added to the base CodeIgniter library, along with only one infintismal change to a standard CodeIgniter file. Because it merely extends CodeIgniter's native functionality, all CodeIgniter methods and techniques apply fully within the framework, and at any time you can have some pages loaded using the standard CodeIgniter way, and others using the CodeByrner framework. I think it's best when you have options.
+
+<b>Sounds cool-whoa, wait. A single change to a core CodeIgniter file? What gives? That sounds...bad.</b>
 
 Yeah, I tried to avoid it. Tried all kinds of things to load the necessary files before your first controller was loaded, but as it turns out none of those methods either 1) worked, or 2) were in any way very clean or elegant. Now, updating a file in the CodeIgniter core is not exactly elegant either, but it was a small change to make the system work within with CodeIgniter's standard hooks system at just the right time. Using the hooks system allows greater control later, and I wanted to leave both you and I open to that.
 
@@ -12,8 +14,8 @@ Simple, all I did was add my own hook to the CodeIgniter.php file. It happens ri
 
 <b>You do know there's a pre_controller hook, right?</b>
 
-Yes, I am aware. But as it turns out, that hook name is kind of a misnomer. The pre_controller hook happens before your controller is <i>instantiated</i>, not before it <i>loads</i>. This was an issue for me because the idea is to have your controllers extend the Page class, which has to extend the MY_Controller class. The Page class must then be loaded prior to loading the controller for the page you're looking for, but it has to load after MY_controller. If your controller extends the Page class, but the Page class hasn't loaded, an error will be thrown. If Page is loaded before the MY_Controller class, an error will also be thrown. So, I created my own hook, and I put it right in that sweet spot.
+Yes, I am aware. But as it turns out, that hook name is kind of a misnomer. The pre_controller hook happens before your controller is <i>instantiated</i>, not before it <i>loads</i>. This was an issue for me because the idea is to have your controllers extend the Page class, which has to extend the MY_Controller class. The Page class must then be loaded prior to loading the controller for the page you're looking for, but it has to load after MY_controller. If your controller extends the Page class, but the Page class hasn't loaded, an error will be thrown. If the Page class is loaded before the MY_Controller class, an error will also be thrown. So, I created my own hook, and I put it right in that sweet spot.
 
-<b>Still sounds dubious</b>
+<b>Still sounds dubious.</b>
 
 Fair enough.
