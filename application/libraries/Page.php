@@ -48,10 +48,7 @@ class Page extends MY_Controller {
 		$this->_default_location = $this->config->item('cb_default_location');
 		$this->_layout = $this->config->item('cb_default_layout');
 		$this->_layout_folder = $this->config->item('cb_default_layout_folder');
-		
-		//Load the component class
-		$this->load->library('Component');
-	}	
+	}
 	
 	
 	//---------------------------------------------------------------------------------------------

@@ -26,7 +26,7 @@ $hook['pre_controller_load'][] = array(
     'function' => 'loadCodeByrner',
     'filename' => 'Codebyrner.php',
     'filepath' => 'hooks',
-    'params' => array('Page')
+    'params' => array('Page', 'Component')
 );
 
 /* End of file hooks.php */
