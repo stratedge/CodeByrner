@@ -19,7 +19,8 @@ class Welcome extends Page {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->addComponent('WelcomeComponent');
+		$this->build();
 	}
 }
 
