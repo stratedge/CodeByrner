@@ -44,5 +44,20 @@ $config['cb_default_layout_folder'] = 'layouts';
 */
 $config['cb_default_location'] = 'content';
 
+
+/*
+|--------------------------------------------------------------------------
+| Default Cmpt Show 404
+|--------------------------------------------------------------------------
+|
+| CodeByrner uses a controller called Cmpt (by default) that allows the
+ * developer to access a specifc component and run a specific method
+ * within that component. If Cmpt controller is called without a URI
+ * segment defining the class to be called, it will by default show a 404
+ * error page. Turn this off by setting this value to FALSE; 
+|
+*/
+$config['cb_redirect_cmpt_to_404'] = TRUE;
+
 /* End of file codebyrner.php */
 /* Location: ./application/config/codebyrner.php */
