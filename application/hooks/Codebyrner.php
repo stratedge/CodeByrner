@@ -41,9 +41,17 @@ class CodeByrner extends CI_Controller {
      */
     function loadCodeByrner(Array $classes)
     {
+    	//Lets load the CodeByrner config file so we can get default settings from it
+		$this->config->load('codebyrner');
+		
+		//Get the path to the core CodeByrner files as set in the config
+		$path = FALSE;
+		$core_folder = $this->config->item('cb_core_folder');
+		if(!empty($core_folder)) $path = $core_folder . '/';
+		
         foreach($classes as $class)
         {
-            $this->load->library($class);
+            $this->load->library($path . $class);
         }
         
         return TRUE;
