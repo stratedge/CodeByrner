@@ -91,7 +91,7 @@ $config['cb_default_location'] = 'content';
 | configured with CodeIgniter.
 |
 */
-$config['cb_redirect_cmpt_to_404'] = FALSE;
+$config['cb_redirect_cmpt_to_404'] = TRUE;
 
 /* End of file codebyrner.php */
 /* Location: ./application/config/codebyrner.php */

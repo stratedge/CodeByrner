@@ -12,7 +12,7 @@ class WelcomeComponent extends Component {
 		return $this->load->view('welcome_message', FALSE, TRUE);
 	}
 	
-	private function birds()
+	private function _birds()
 	{
 		return 'hello';
 	}

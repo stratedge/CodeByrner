@@ -47,6 +47,11 @@ class Cmpt extends MY_Controller {
 	 * provided). Subsequent URI segments are provided as an array to the params object of the
 	 * class being requested. If the class cannot be loaded or the method cannot be found, the
 	 * request will render a 404 error or nothing, depending on options set in the config.
+	 * 
+	 * @param	string	$class	The name of the component class that will be called
+	 * @param	array	$params	An array of the URI segments in the URL that come after the component class name
+	 * @return	mixed			The output of the page is returned to be sent to the browser
+	 * @author	JB
 	 */
 	public function _remap($class, array $params = array())
 	{
@@ -55,7 +60,7 @@ class Cmpt extends MY_Controller {
 		{
 			if($this->config->item('cb_redirect_cmpt_to_404') === TRUE)
 			{
-				show_404('page');
+				show_404($class);
 			}
 			else return FALSE;
 		}
@@ -78,11 +83,11 @@ class Cmpt extends MY_Controller {
 		$reflection = new ReflectionMethod($this->$class, $method);
 		
 		//Check and see if there is a method in the class by this name, and that it's public, otherwise return nothing
-		if(method_exists($this->$class, $method) === FALSE || $reflection->isPublic() === FALSE || substr($method, 0, 1) != '_')
+		if(method_exists($this->$class, $method) === FALSE || $reflection->isPublic() === FALSE || substr($method, 0, 1) == '_')
 		{
 			if($this->config->item('cb_redirect_cmpt_to_404') === TRUE)
 			{
-				show_404('page');
+				show_404($class . '/' . $method);
 			}
 			else return FALSE;
 		}
@@ -93,8 +98,8 @@ class Cmpt extends MY_Controller {
 		//Set the parameters to the component
 		$this->$class->setParams($params);
 		
-		//Render the HTML and send it to the browser
-		$this->output->set_output($this->$class->$method($params));
+		//Render the output and send it to the browser
+		return $this->output->set_output($this->$class->$method($params));
 	}
 }
 

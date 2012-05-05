@@ -30,7 +30,7 @@
  */
 class Component {
 	
-	private $params = array();
+	private $_params = array();
 	
 
 	function __construct()
@@ -68,9 +68,32 @@ class Component {
 	//---------------------------------------------------------------------------------------------
 	
 	
+	/**
+	 * Add parameters to the component
+	 * 
+	 * Accepts parameters to add to the component's _params array. Arrays and objects will be
+	 * iterated over and each values will be added to the _params array. Keys that are numeric will
+	 * be ignored, while keys that are strings will be preserved. All other data types will just be
+	 * appended to the _params array.
+	 * 
+	 * @param	mixed	$params	The parameter(s) to be added to the object's _params array
+	 * @return	bool			Currently only returns TRUE
+	 * @author	JB
+	 */
 	function setParams($params)
 	{
-		$this->params = $params;
+		//If the variavle passed is an array or object, merge its keys or properties, maintaining only string keys
+		if(is_array($params) || is_object($params))
+		{
+			foreach((array) $params as $key => $value)
+			{
+				if(is_numeric($key)) $this->_params[] = $value;
+				else $this->_params[$key] = $value;
+			}
+		}
+		else $this->_params[] = $params;
+		
+		return TRUE;
 	}
 	
 }
