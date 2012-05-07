@@ -22,18 +22,23 @@
  * @subpackage	Helpers
  * @category	Helpers
  * @author		JB
+ * @version		1.0
+ * @since		1.0
  */
 
-// ------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+
 
 if ( ! function_exists('dump'))
 {
     /**
-     * Stop output of the page, and just return a human-readable copy of the variable that
+     * Stop output of the page and just returns a human-readable copy of the variable that
      * is passed in.
      * 
      * @param	mixed	$data	The variable to investigate
      * @author	JB
+	 * @version	1.0
+	 * @since	1.0
      */
 	function dump($data)
 	{

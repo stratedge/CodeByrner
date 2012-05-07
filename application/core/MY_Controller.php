@@ -20,15 +20,29 @@
  *
  * This class servers primarily as a holding file. Since CodeIgniter allows the user to extend
  * CI_Controller with this file, and users may wish to do so, then our Page class extends this
- * class to maintain the developer's flexibility and standard CodeIgniter functionality.
+ * class to maintain the developer's flexibility and standard CodeIgniter functionality without
+ * requiring that the developer then need to go change any inheritance in CodeByrner files.
  *
  * @package		CodeByrner
  * @subpackage	Core
  * @category	Core
  * @author		JB
+ * @version		1.0
+ * @since		1.0
  */
  class MY_Controller extends CI_Controller {
     
+	
+	/**
+	 * Constructor Method
+	 * 
+	 * This construction method will call the class' parent's constructor to ensure that any
+	 * required initializations are completed.
+	 * 
+	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
+	 */
     function __construct()
     {
         parent::__construct();

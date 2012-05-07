@@ -24,9 +24,11 @@
  * extend this class, or any other class that extends this class.
  *
  * @package		CodeByrner
- * @subpackage	Core
- * @category	Core
+ * @subpackage	Libraries
+ * @category	Libraries
  * @author		JB
+ * @version		1.0
+ * @since		1.0
  */
 class Page extends MY_Controller {
 		
@@ -37,6 +39,17 @@ class Page extends MY_Controller {
 	private $_layout_folder;
 	private $_tpl;
 	
+	/**
+	 * Constructor Method
+	 * 
+	 * This construction method will call the class' parent's constructor to ensure that any
+	 * required initializations are completed and then define some default properties according to
+	 * values set in the CodeByrner configuration file.
+	 * 
+	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
+	 */
     function __construct()
     {
         parent::__construct();
@@ -64,6 +77,8 @@ class Page extends MY_Controller {
 	 * @param	string			$method		The name of the method to call in the component class. Defaults to just index.
 	 * @return	bool
 	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
 	 */
 	function addComponent($class, $location = FALSE, array $params = array(), $method = 'index')
 	{
@@ -90,6 +105,10 @@ class Page extends MY_Controller {
 	 * runs through the list of components and executes the given method for each. What gets
 	 * returned is added to the content for the section of the layout the component was specified
 	 * for. That data is then added to the layout view and sent to the browser.
+	 * 
+	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
 	 */
 	 function build()
 	 {
@@ -115,7 +134,7 @@ class Page extends MY_Controller {
 		}
 		
 		//If a layouts folder is defined add a backslash to it so we can build a path to the view correctly
-		if($this->_layout_folder) $this->_layout_folder = $this->_layout_folder . '/';
+		if(!empty($this->_layout_folder)) $this->_layout_folder = $this->_layout_folder . '/';
 		
 		//Build the page
 		$this->load->view($this->_layout_folder . $this->_layout, $this->_data);
@@ -123,4 +142,4 @@ class Page extends MY_Controller {
 }
 
 /* End of file Page.php */
-/* Location: ./application/libraries/Page.php */
+/* Location: ./application/libraries/codebyrner/Page.php */

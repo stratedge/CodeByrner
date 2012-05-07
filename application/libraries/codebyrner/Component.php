@@ -27,15 +27,33 @@
  * @subpackage	Libraries
  * @category	Libraries
  * @author		JB
+ * @version		1.0
+ * @since		1.0
  */
 class Component {
 	
 	private $_params = array();
-	
 
+	/**
+	 * Constructor Method
+	 * 
+	 * This construction method will check to see if services are enabled, and if they are, will
+	 * try to load the service class to the main CodeIgniter object.
+	 * 
+	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
+	 */
 	function __construct()
 	{
-		
+		//Are services enabled? If so, load the service class
+		if($this->config->item('cb_enable_services') === TRUE)
+		{
+			$path = FALSE;
+			$core_folder = $this->config->item('cb_core_folder');
+			if(!empty($core_folder)) $path = $core_folder . '/';
+			$this->load->library($path . 'Service');
+		}
 	}
 	
 	
@@ -53,6 +71,8 @@ class Component {
 	 * @param	string	$name	The name of the property being requested
 	 * @return	mixed			The value of the property in the object, in CodeIgniter, or FALSE
 	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
 	 */	
 	function __get($name)
 	{
@@ -72,13 +92,14 @@ class Component {
 	 * Add parameters to the component
 	 * 
 	 * Accepts parameters to add to the component's _params array. Arrays and objects will be
-	 * iterated over and each values will be added to the _params array. Keys that are numeric will
+	 * iterated over and each value will be added to the _params array. Keys that are numeric will
 	 * be ignored, while keys that are strings will be preserved. All other data types will just be
 	 * appended to the _params array.
 	 * 
 	 * @param	mixed	$params	The parameter(s) to be added to the object's _params array
-	 * @return	bool			Currently only returns TRUE
 	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
 	 */
 	function setParams($params)
 	{
@@ -92,11 +113,9 @@ class Component {
 			}
 		}
 		else $this->_params[] = $params;
-		
-		return TRUE;
 	}
 	
 }
 
 /* End of file Component.php */
-/* Location: ./application/libraries/Component.php */
+/* Location: ./application/libraries/codebyrner/Component.php */

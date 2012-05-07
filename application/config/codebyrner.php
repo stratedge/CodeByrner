@@ -10,8 +10,9 @@
 | the system. For the sake of organization, these files are by default
 | kept in their own folder in the application/libraries folder. If the
 | developer wishes to place the core files anywhere else inside the
-| application/libraries they can set this property to the folder(s),
-| or empty if the files are placed directly in application/libraries.
+| application/libraries directory they can set this property to the
+| folder(s), or empty if the files are placed directly in
+| application/libraries.
 |
 */
 $config['cb_core_folder'] = 'codebyrner';
@@ -22,16 +23,52 @@ $config['cb_core_folder'] = 'codebyrner';
 | Components Default Location
 |--------------------------------------------------------------------------
 |
-| CodeByrners uses components to construct an entire page. Given the
-| organization of CodeIgniter, components are libraries and go in the
+| CodeByrner uses components to construct an entire page. Given the
+| structure of CodeIgniter, components are libraries and go in the
 | application/libraries folder. For the sake of organization, CodeByrner
 | will by default expect that components are placed inside a folder
-| called components inside the application/libraries folder so that
+| called "components" inside the application/libraries folder so that
 | components can be out of the way. Changing this option will allow you
 | to put components in whatever subfolder you desire, or directly in the
 | application/libraries directory.
+|
 */
 $config['cb_components_folder'] = 'components';
+
+
+/*
+|--------------------------------------------------------------------------
+| Use Service Layer
+|--------------------------------------------------------------------------
+|
+| CodeByrner introduces a service layer to CodeIgniter that allows a
+| developer to consolidate common logic and decisions around a single
+| feature or data type into a single file. Common logic checks, like
+| "does this user have access to this?", can then be placed in a service
+| layer, devorcing business logic from your models, and making it reusable
+| throughout your components and controllers. This option turns the usage
+| of services on and off. When enabled, the Service class will be loaded
+| so that services can extend it, otherwise the service class will not
+| be loaded.
+|
+*/
+$config['cb_enable_services'] = TRUE;
+
+
+/*
+|--------------------------------------------------------------------------
+| Services Default Location
+|--------------------------------------------------------------------------
+|
+| This option defines where your service classes are located within the
+| application/libraries directory. Updating this value allows the developer
+| to move the services to any subfolder within the application/libraries
+| directory requested, or directly in the application/libraries directory
+| by changing this to an empty string.
+|
+*/
+$config['cb_services_folder'] = 'services';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,8 +93,9 @@ $config['cb_default_layout'] = 'basic';
 | that layout files be kept within the views folder just like any other
 | views. To keep things organized, a developer may set a folder that
 | contains the layout views so that when pages are built, the builder
-| will automatically go to that folder to find your layout file. To
-| use no folder set this value to FALSE.
+| will automatically go to that folder to find your layout file. To place
+| layouts directly in the application/views directory, then set this
+| option to an empty string.
 |
 */
 $config['cb_default_layout_folder'] = 'layouts';
@@ -69,10 +107,10 @@ $config['cb_default_layout_folder'] = 'layouts';
 |--------------------------------------------------------------------------
 |
 | CodeByrner uses layouts to construct pages, which are simply views that
-| define the structure of page with variables where the content should
+| define the structure of a page with variables where the content should
 | go. If a component is added to a page, but no location is provided
-| for where on the page the component should go, it will be added to the
-| location listed below.
+| for where on the page the component's output should go, it will be added
+| to the location listed below.
 |
 */
 $config['cb_default_location'] = 'content';
@@ -86,12 +124,12 @@ $config['cb_default_location'] = 'content';
 | CodeByrner uses a controller called Cmpt (by default) that allows the
 | developer to access a specifc component and run a specific method
 | within that component. If the Cmpt controller is called without a URI
-| segment defining the class to be called, it will by default return
-| nothing. Setting this value to TRUE will return whatever 404 page is
-| configured with CodeIgniter.
+| segment defining the class to be called, it will return nothing by
+| default. Setting this value to TRUE will return whatever 404 page is
+| configured within CodeIgniter.
 |
 */
-$config['cb_redirect_cmpt_to_404'] = TRUE;
+$config['cb_redirect_cmpt_to_404'] = FALSE;
 
 /* End of file codebyrner.php */
 /* Location: ./application/config/codebyrner.php */

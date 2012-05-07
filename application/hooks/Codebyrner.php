@@ -25,9 +25,12 @@
  * @subpackage  Hooks
  * @category    Hooks
  * @author      JB
+ * @version		1.0
+ * @since		1.0
  */
 class CodeByrner extends CI_Controller {
     
+	
     /**
      * CodeByrner load method
      * 
@@ -36,8 +39,9 @@ class CodeByrner extends CI_Controller {
      * loaded.
      * 
      * @param	$array	$classes	An array of classes to load in the pre_controller_load hook
-     * @return	bool				No need to return anything, but a good habit - returns TRUE
      * @author	JB
+	 * @version	1.0
+	 * @since	1.0
      */
     function loadCodeByrner(Array $classes)
     {
@@ -53,8 +57,6 @@ class CodeByrner extends CI_Controller {
         {
             $this->load->library($path . $class);
         }
-        
-        return TRUE;
     }
     
 }

@@ -20,16 +20,30 @@
  *
  * This class is one of the core files for the CodeByrner platform. The purpose of this class is to
  * allow the developer to call a specific method within a specific component and have only that
- * component's output returned to the browser. Especially useful when the developer must call a
- * component's method via ajax to either save some data or update a specific section of a page.
+ * component's output returned to the browser via a URL. Especially useful when the developer must
+ * call a component's method via ajax to either save some data or update a specific section of a
+ * page.
  *
  * @package		CodeByrner
  * @subpackage	Controllers
  * @category	Controllers
  * @author		JB
+ * @version		1.0
+ * @since		1.0
  */
 class Cmpt extends MY_Controller {
 	
+	
+	/**
+	 * Constructor Method
+	 * 
+	 * This construction method will call the class' parent's constructor to ensure that any
+	 * required initializations are completed.
+	 * 
+	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
+	 */
 	function __construct()
 	{
 		parent::__construct();
@@ -52,6 +66,8 @@ class Cmpt extends MY_Controller {
 	 * @param	array	$params	An array of the URI segments in the URL that come after the component class name
 	 * @return	mixed			The output of the page is returned to be sent to the browser
 	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
 	 */
 	public function _remap($class, array $params = array())
 	{
