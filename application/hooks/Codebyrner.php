@@ -2,7 +2,7 @@
 /**
  * CodeByrner
  *
- * An open source application development framework leveraging components and built on CodeIgniter for PHP 5.1.6 or newer
+ * An open source application development framework leveraging components and built on CodeIgniter for PHP 5.2 or newer
  *
  * @package     CodeByrner
  * @author      JB
