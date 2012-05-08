@@ -96,10 +96,21 @@ class Cmpt extends MY_Controller {
 		$method = isset($params[0]) && !empty($params[0]) ? $params[0] : 'index';
 		
 		//Instantiate a reflection of the method being called so we can test it's availability
+		
+		//Does the method exist within the class?
+		if(method_exists($this->$class, $method) === FALSE)
+		{
+			if($this->config->item('cb_redirect_cmpt_to_404') === TRUE)
+			{
+				show_404($class . '/' . $method);
+			}
+			else return FALSE;
+		}
+		
 		$reflection = new ReflectionMethod($this->$class, $method);
 		
-		//Check and see if there is a method in the class by this name, and that it's public, otherwise return nothing
-		if(method_exists($this->$class, $method) === FALSE || $reflection->isPublic() === FALSE || substr($method, 0, 1) == '_')
+		//Check and see if the method is public, otherwise return nothing
+		if($reflection->isPublic() === FALSE || substr($method, 0, 1) == '_')
 		{
 			if($this->config->item('cb_redirect_cmpt_to_404') === TRUE)
 			{
