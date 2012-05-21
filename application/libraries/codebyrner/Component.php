@@ -96,10 +96,11 @@ class Component {
 	 * be ignored, while keys that are strings will be preserved. All other data types will just be
 	 * appended to the _params array.
 	 * 
-	 * @param	mixed	$params	The parameter(s) to be added to the object's _params array
-	 * @author	JB
-	 * @version	1.0
-	 * @since	1.0
+	 * @param		mixed	$params	The parameter(s) to be added to the object's _params array
+	 * @author		JB
+	 * @version		1.0
+	 * @since		1.0
+	 * @deprecated
 	 */
 	function setParams($params)
 	{
@@ -113,6 +114,28 @@ class Component {
 			}
 		}
 		else $this->_params[] = $params;
+	}
+	
+	
+	//---------------------------------------------------------------------------------------------
+	
+	
+	/**
+	 * Build the component's output
+	 * 
+	 * This method is merely a convenience wrapper for returning the specified view parsed with the
+	 * given data, instead of having the output passed to the browser.
+	 * 
+	 * @param	string	$view	The view file that should be parsed with the given data
+	 * @param	mixed	$data	An associative array or object of information that will be used in parsing the view
+	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
+	 */
+	function build($view, $data = array())
+	{
+		if(!is_array($data) && !is_object($data)) $data = array();
+		return $this->load->view($view, $data, TRUE);
 	}
 	
 }

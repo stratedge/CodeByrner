@@ -131,5 +131,25 @@ $config['cb_default_location'] = 'content';
 */
 $config['cb_redirect_cmpt_to_404'] = FALSE;
 
+
+/*
+|--------------------------------------------------------------------------
+| Set Default Timezone
+|--------------------------------------------------------------------------
+|
+| Developers that upgrade PHP from version 5.2 to 5.3 might start getting
+| errors on their pages stating that date functions require that the
+| timezone be set. This should generally be done in the php.ini file
+| using date.timezone = "TIMEZONE IDENTIFIED". If you are using multiple
+| environment, don't want to update your php.ini file, or can't update
+| your php.ini file, then uncomment the section below. The following
+| section defaults to GMT, but you may change it to suit your needs.
+|
+*/
+//if(ini_get('date.timezone') == '')
+//{
+//	date_default_timezone_set('GMT');
+//}
+
 /* End of file codebyrner.php */
 /* Location: ./application/config/codebyrner.php */

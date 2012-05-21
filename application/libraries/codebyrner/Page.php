@@ -111,13 +111,13 @@ class Page extends MY_Controller {
 	 * @since	1.0
 	 */
 	 function build()
-	 {
-	 	//Get the path to where the component classes are being stored from the config
-	 	$path = FALSE;
+	{
+		//Get the path to where the component classes are being stored from the config
+		$path = FALSE;
 		$components_folder = $this->config->item('cb_components_folder');
 		if(!empty($components_folder)) $path = $components_folder . '/';
 
-	 	foreach($this->_components as $component)
+		foreach($this->_components as $component)
 		{
 			//Extract the array of component information
 			extract($component, EXTR_OVERWRITE);
@@ -138,7 +138,25 @@ class Page extends MY_Controller {
 		
 		//Build the page
 		$this->load->view($this->_layout_folder . $this->_layout, $this->_data);
-	 }
+	}
+
+
+	/**
+	 * Set the Layout
+	 * 
+	 * This method allows the developer to define the layout view file to use when building the
+	 * page.
+	 * 
+	 * @param	string	$layout	The name of the viewfile to use as the layout
+	 * @author	JB
+	 * @version	1.0
+	 * @since	1.0
+	 */
+	function setLayout($layout)
+	{
+		$this->_layout = $layout;
+	}
+	
 }
 
 /* End of file Page.php */

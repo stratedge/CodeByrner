@@ -122,11 +122,10 @@ class Cmpt extends MY_Controller {
 		//Remove the first item from the parameters since it's the method name and not technically user data to pass along
 		array_shift($params);
 		
-		//Set the parameters to the component
-		$this->$class->setParams($params);
-		
 		//Render the output and send it to the browser
-		return $this->output->set_output($this->$class->$method($params));
+		return $this->output->set_output(
+			call_user_func_array(array($this->$class, $method), $params)
+		);
 	}
 }
 
