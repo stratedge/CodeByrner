@@ -140,15 +140,17 @@ $config['cb_redirect_cmpt_to_404'] = FALSE;
 | Developers that upgrade PHP from version 5.2 to 5.3 might start getting
 | errors on their pages stating that date functions require that the
 | timezone be set. This should generally be done in the php.ini file
-| using date.timezone = "TIMEZONE IDENTIFIED". If you are using multiple
-| environment, don't want to update your php.ini file, or can't update
+| using date.timezone = "TIMEZONE IDENTIFIER". If you are using multiple
+| environments, don't want to update your php.ini file, or can't update
 | your php.ini file, then uncomment the section below. The following
-| section defaults to GMT, but you may change it to suit your needs.
+| section defaults to UTC, but you may change it to suit your needs.
 |
+| For a complete list of timezone identifiers, visit:
+| http://www.php.net/manual/en/timezones.php
 */
 //if(ini_get('date.timezone') == '')
 //{
-//	date_default_timezone_set('GMT');
+//	date_default_timezone_set('UTC');
 //}
 
 /* End of file codebyrner.php */
