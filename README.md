@@ -1,21 +1,87 @@
-<h1>Welcome To CodeByrner!</h1>
+#Quickstart Guide
+If you don’t want to play with any of the configuration options and instead just want to jump into building something, then by all means let’s dig in.
 
-CodeByrner is an open source, free-to-use-and-modify library that extends CodeIgniter in order to construct pages from many small, reusable components, instead of single controllers.
+# Enabling CodeByrner
+You’re in luck, CodeByrner comes enabled out of the box!
 
-A premium has been placed on keeping CodeByrner as small and as clean as possible, as well as keeping as light a processing footprint as possible. CodeByrner is a small set of files added to the base CodeIgniter library, along with only one infintismal change to a standard CodeIgniter file. Because it merely extends CodeIgniter's native functionality, all CodeIgniter methods and techniques apply fully within the framework, and at any time you can have some pages loaded using the standard CodeIgniter way, and others using the CodeByrner framework. I think it's best when you have options.
+# Creating A Page (Controller)
+Creating a page in CodeByrner begins exactly where it does in CodeIgniter: your controller. The only difference is that instead of handling all the logic that builds all the pieces of the page within a method, you define components and where those components fit on the page, and then tell the page to build. Also, make sure you extend the Page class, not the CI_Controller or MY_Controller classes.
 
-<b>Sounds cool-whoa, wait. A single change to a core CodeIgniter file? What gives? That sounds...bad.</b>
+Creating a simple page with one single component might look like this:
 
-Yeah, I tried to avoid it. Tried all kinds of things to load the necessary files before your first controller was loaded, but as it turns out none of those methods either 1) worked, or 2) were in any way very clean or elegant. Now, updating a file in the CodeIgniter core is not exactly elegant either, but it was a small change to make the system work within with CodeIgniter's standard hooks system at just the right time. Using the hooks system allows greater control later, and I wanted to leave both you and I open to that.
+	<?php
+	
+	Class Simplepage extends Page {
+	
+	    function index()
+	    {
+	        $this->addComponent('SimpleComponent');
+	        $this->build();
+	    }
+	}
 
-<b>Ok...so what changed?</b>
+# Creating A Component
+So far we've added a component to the page, but that component doesn't exist yet. We need to create that component. We do this by creating a file named SimpleComponent.php in the application/libraries/components folder. By default, when a component is called to be placed on a page, the index method is called. So the inside of our SimpleComponent.php file might look something this:
 
-Simple, all I did was add my own hook to the CodeIgniter.php file. It happens right after the system checks for a MY_Controller class and loads it if it finds it. This way CI_Controller and MY_Controller are loaded (and we need them to be), but the controller for the page being requested hasn't been loaded yet. I called it the pre_controller_load hook.
+	<?php
+	
+	class SimpleComponent extends Component {
+	
+	    function index()
+	    {
+	    	date_default_timezone_set('UTC');
+	        $date = date('F j, Y');
+	        $odd_even = date('j') % 2 == 0 ? 'even' : 'odd';
+	        $data = array(
+	            'date' => $date,
+	            'odd_even' => $odd_even
+	        );
+	
+	        return $this->build('simple_component', $data);
+	    }
+	}
 
-<b>You do know there's a pre_controller hook, right?</b>
+You may have noticed that this looks a lot like how a controller normally works in CodeIgniter, and that's the point. Working inside your components will be comfortable and familiar to you (if I did my job right). Get some data, write some logic to build an associative array of information to pass to your view, and then load your view. The only caveat is that you're using the build() method instead of using $this->load->view() at the end. This is mostly just for convenience - build() merely calls $this->load->view() but will always return the output, instead of passing it on to the browser.
 
-Yes, I am aware. But as it turns out, that hook name is kind of a misnomer. The pre_controller hook happens before your controller is <i>instantiated</i>, not before it <i>loads</i>. This was an issue for me because the idea is to have your controllers extend the Page class, which has to extend the MY_Controller class. The Page class must then be loaded prior to loading the controller for the page you're looking for, but it has to load after MY_controller. If your controller extends the Page class, but the Page class hasn't loaded, an error will be thrown. If the Page class is loaded before the MY_Controller class, an error will also be thrown. So, I created my own hook, and I put it right in that sweet spot.
+# Creating a View
+Creating and working with views is identical to how views work in a standard CodeIgniter install. Simply create a simple_component.php file in the application/views folder and add some markup. Let's try this for now:
 
-<b>Still sounds dubious.</b>
+	<div>
+		<p>Today's date is <?=$date?>. Looks like the day of the month is an <?=$odd_even?> number.</p>
+	</div>
 
-Fair enough.
+Once we have completed this step we are technically finished, but you might be wondering, "ok, so once I return all the HTML generated by my components, how exactly does it build a complete page?" If you're curious, continue to the next heading...
+
+# Defining A Layout
+Getting all the HTML from your components is great, but you need to do something with it. Components provide content for a small part of your page, so you need something to define a _structure_ in which to place your components. This is what a layout is used for. Layouts are stored (by default) in the application/views/layouts directory and work exactly the same way that any other view would work. A layout should define the html structure in which to place your components, and you merely echo a variable wherever you want to display content. There's no limit to the number of areas of content that you can define with a page layout - just keep echoing out variables.
+
+The variable name you use for a section in the layout is the section's name. You'll notice that in our Simplepage example we only passed the name of the component when we called the addComponent() method. We could have passed a second parameter which would be the name of the section to place the component's content. If you don't pass one then CodeByrner will just default to adding it to the section named "content".
+
+Confused? An example to clear things up...
+
+We never defined a layout to use, so CodeByrner will use basic.php in application/views/layouts. Let's open this file and change its contents to the following:
+
+	<html>
+	    <head>
+	    	<title>CodeByrner Quick Start</title>
+	        <style>
+	            div#wrapper { margin: 10px auto; border: 1px solid #000; width: 600px;}
+	            p { text-align: center; }
+	        </style>
+	    </head>
+	    <body>
+	        <div id="wrapper">
+	            <!-- Define a section named "content" -->
+	            <?if(isset($content)) echo $content?>
+	        </div>
+	    </body>
+	</html>
+
+You'll notice we defined only one section that we can add components to, and we named it "content". We can add an unlimited number of components to our "content" section, but it's still the only section in this layout.
+
+So now the HTML markup returned from our component will be sent to the layout as the variable "content". As you might expect it will get printed inside the div with a class of "wrapper". If we had multiple components added to the same section, their HTML markup would be combined and added as one big string in that spot. They would appear in the order that they were added in our controller.
+
+It's important to note the isset() check. It's perfectly fine to have no components defined for a section, but if we don't ensure that there's data for a section before trying to print the variable, PHP will throw an error on the page.
+
+# That's It
+Going into any more detail would defeat the purpose of this page. For more information on any particular topic, feel free to browse the complete documentation (just as soon as I finish it all). There's more goodies built into CodeByrner, I invite you check them all out. And, as always, please send constructive feedback my way.
