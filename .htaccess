@@ -1,0 +1,8 @@
+# Below is the suggested, simple modrewrite rules from CodeIgniter. To use them, remove the # from
+# each line. This file is deliberately commented-out, as its inclusion in CodeByrner is for
+# convenience, but default CodeIgniter functionality is nonetheless maintained.
+#--------------------------------------------------------------------------------------------------
+
+#RewriteEngine on
+#RewriteCond $1 !^(index\.php|images|robots\.txt)
+#RewriteRule ^(.*)$ /index.php/$1 [L]
