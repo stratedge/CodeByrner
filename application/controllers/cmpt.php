@@ -116,7 +116,12 @@ class Cmpt extends MY_Controller {
 			{
 				show_404($class . '/' . $method);
 			}
-			else return FALSE;
+			else
+			{
+				//Set the header status to Forbidden and return nothing
+				$this->output->set_status_header('403');
+				return FALSE;
+			}
 		}
 		
 		//Remove the first item from the parameters since it's the method name and not technically user data to pass along
