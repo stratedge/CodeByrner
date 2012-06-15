@@ -49,10 +49,10 @@ $config['cb_components_folder'] = 'components';
 | throughout your components and controllers. This option turns the usage
 | of services on and off. When enabled, the Service class will be loaded
 | so that services can extend it, otherwise the service class will not
-| be loaded.
+| be loaded. Services are disabled by default.
 |
 */
-$config['cb_enable_services'] = TRUE;
+$config['cb_enable_services'] = FALSE;
 
 
 /*
@@ -63,7 +63,7 @@ $config['cb_enable_services'] = TRUE;
 | This option defines where your service classes are located within the
 | application/libraries directory. Updating this value allows the developer
 | to move the services to any subfolder within the application/libraries
-| directory requested, or directly in the application/libraries directory
+| directory desired, or directly in the application/libraries directory
 | by changing this to an empty string.
 |
 */
