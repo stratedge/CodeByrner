@@ -46,14 +46,28 @@ class Component {
 	 */
 	function __construct()
 	{
+		$path = FALSE;
+		$core_folder = $this->config->item('cb_core_folder');
+		if(!empty($core_folder)) $path = $core_folder . '/';
+			
 		//Are services enabled? If so, load the service class
 		if($this->config->item('cb_enable_services') === TRUE)
 		{
-			$path = FALSE;
-			$core_folder = $this->config->item('cb_core_folder');
-			if(!empty($core_folder)) $path = $core_folder . '/';
 			$this->load->library($path . 'Service');
 		}
+		
+		//Are records enabled? If so, load the records class
+		if($this->config->item('cb_enable_records') === TRUE)
+		{
+			if (!class_exists('CI_Model'))
+			{
+				load_class('Model', 'core');
+			}
+			$this->load->library($path . 'Record');
+		}
+		
+		dump(get_instance());
+		
 	}
 	
 	

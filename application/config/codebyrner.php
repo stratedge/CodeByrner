@@ -38,6 +38,25 @@ $config['cb_components_folder'] = 'components';
 
 /*
 |--------------------------------------------------------------------------
+| Use Record Layer
+|--------------------------------------------------------------------------
+|
+| CodeByrner introduces a record layer as an extension of model classes.
+| Records are models and extend the MY_Model class, but should be used
+| specifically with database tables that have one auto-incrementing
+| numerical primary key. By using the loading functions the record class
+| will grab the requested row or rows and keeps the rows as objects
+| within the CodeIgniter class so any subsequent attempts to load that
+| same database row can be take directly from memory instead of having to
+| hit memcache (if enabled) or the database again during the same server
+| request. Records are disabled by default.
+|
+*/
+$config['cb_enable_records'] = TRUE;
+
+
+/*
+|--------------------------------------------------------------------------
 | Use Service Layer
 |--------------------------------------------------------------------------
 |
