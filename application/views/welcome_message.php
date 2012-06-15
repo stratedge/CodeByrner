@@ -67,7 +67,7 @@
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+	<h1>Welcome to CodeIgniter + CodeByrner!</h1>
 
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
@@ -79,6 +79,8 @@
 		<code>application/controllers/welcome.php</code>
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+		
+		<p>For complete information on CodeByrner and how it works, feel free to browser the <a href="https://github.com/xjstratedgebx/CodeByrner/wiki" target="_blank">CodeByrner Wiki</a>.</p>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds using <strong>{memory_usage}</strong> of memory</p>
