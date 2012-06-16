@@ -59,10 +59,12 @@ class Component {
 		//Are records enabled? If so, load the records class
 		if($this->config->item('cb_enable_records') === TRUE)
 		{
+			//The records class depends on the CI_Model and MY_Model files to be loaded first
 			if (!class_exists('CI_Model'))
 			{
 				load_class('Model', 'core');
 			}
+			
 			$this->load->library($path . 'Record');
 		}
 	}
