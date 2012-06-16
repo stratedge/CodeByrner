@@ -81,7 +81,7 @@ class Component {
 	 * CodeIgniter instance to see if the property exists in there. If it does, return it, if it
 	 * doesn't, return FALSE. This allows us to call $this->load->view(), for example.
 	 * 
-	 * @param	string	$na	The name of the property being requested
+	 * @param	string	$name	The name of the property being requested
 	 * @return	mixed			The value of the property in the object, in CodeIgniter, or FALSE
 	 * @author	JB
 	 * @version	1.0
