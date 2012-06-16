@@ -52,7 +52,7 @@ $config['cb_components_folder'] = 'components';
 | request. Records are disabled by default.
 |
 */
-$config['cb_enable_records'] = TRUE;
+$config['cb_enable_records'] = FALSE;
 
 
 /*
