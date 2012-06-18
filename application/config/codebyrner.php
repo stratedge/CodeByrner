@@ -47,9 +47,14 @@ $config['cb_components_folder'] = 'components';
 | numerical primary key. By using the loading functions the record class
 | will grab the requested row or rows and keeps the rows as objects
 | within the CodeIgniter class so any subsequent attempts to load that
-| same database row can be take directly from memory instead of having to
-| hit memcache (if enabled) or the database again during the same server
-| request. Records are disabled by default.
+| same database row can be taken directly from memory instead of having to
+| hit the database again during the same server request. Records are
+| disabled by default.
+| 
+| RECORDS ARE CURRENTLY AN EXPERIMENTAL FEATURE AND MAY BE PRONE TO BEING
+| REWRITTEN OR REMOVED ALTOGETHER. PLEASE CONSIDER USING THEM CAREFULLY
+| UNTIL SUCH A TIME THAT THEY ARE AN ACCEPTED PART OF THE CODEBYRNER
+| CORE.
 |
 */
 $config['cb_enable_records'] = FALSE;
