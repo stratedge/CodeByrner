@@ -23,6 +23,7 @@
  * @package     CodeByrner
  * @subpackage  Libraries
  * @category    Libraries
+ * @property	string|FALSE	$_path	FALSE before construction, this property gets filled in with the default path to services so this class can load them if a value is set in the CodeByrner config
  * @author      JB
  * @version		1.0
  * @since		1.0

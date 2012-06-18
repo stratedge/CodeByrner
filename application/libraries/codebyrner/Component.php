@@ -26,6 +26,7 @@
  * @package		CodeByrner
  * @subpackage	Libraries
  * @category	Libraries
+ * @property	array		$_params	A deprecated property that was once used to keep track of parameters passed to component methods
  * @author		JB
  * @version		1.0
  * @since		1.0

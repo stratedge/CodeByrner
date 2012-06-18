@@ -26,6 +26,12 @@
  * @package		CodeByrner
  * @subpackage	Libraries
  * @category	Libraries
+ * @property	array		$_components		An array of the components added to the page and their properties
+ * @property	array		$_data				Deprecated property, no longer in use and should go away in the next version
+ * @property	string		$_default_location	The name of the section in a layout that content should be assigned to if not given when a component is added. Uses the value from the CodeByrner config
+ * @property	string		$_layout			The name of the layout file that should be used to build the page
+ * @property	string		$_layout_folder		The name of folder in which layout files are kept by default. Uses the value from the CodeByrner config unless otherwise specified
+ * @property	string		$_tpl				Deprecated property, no longer in use and should go away in the next version
  * @author		JB
  * @version		1.0
  * @since		1.0

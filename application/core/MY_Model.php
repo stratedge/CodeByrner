@@ -26,6 +26,7 @@
  * @package		CodeByrner
  * @subpackage	Core
  * @category	Core
+ * @property	CI_DB_mysql_driver	$db	A CodeIgniter database driver object that can be used to switch databases as needed
  * @author		JB
  * @version		1.0
  * @since		1.0
