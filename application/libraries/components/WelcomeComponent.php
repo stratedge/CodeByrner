@@ -9,7 +9,7 @@ class WelcomeComponent extends Component {
 	
 	function index()
 	{
-		return $this->load->view('welcome_message', FALSE, TRUE);
+		return $this->build('welcome_message');
 	}
 }
 
