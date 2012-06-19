@@ -32,13 +32,18 @@
 if ( ! function_exists('dump'))
 {
     /**
+	 * A debug method that stops output and shows the variable type and value
+	 *
      * Stop output of the page and just returns a human-readable copy of the variable that
      * is passed in.
      * 
-     * @param	mixed	$data	The variable to investigate
-     * @author	JB
-	 * @version	1.0
-	 * @since	1.0
+	 * @package		CodeByrner
+	 * @subpackage	Helpers
+	 * @category	Helpers
+     * @param		mixed		$data	The variable to investigate
+     * @author		JB
+	 * @version		1.0
+	 * @since		1.0
      */
 	function dump($data)
 	{
