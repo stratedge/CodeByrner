@@ -1,1 +1,1 @@
-<?=isset($content) ? $content : FALSE ?>
+<?php echo isset($content) ? $content : FALSE ?>
