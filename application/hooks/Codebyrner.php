@@ -55,7 +55,7 @@ class CodeByrner extends CI_Controller {
 		
         foreach($classes as $class)
         {
-            $this->load->library($path . $class);
+            require_once(APPPATH . 'libraries/' . $path . $class . '.php');
         }
     }
     
